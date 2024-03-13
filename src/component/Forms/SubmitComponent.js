@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import './index.css'
-import {User} from "../../Pages/Website/Context/Context"
+import {User} from "../../Pages/Website/Context/UserContext"
 import { useContext } from "react"
 export default function SubmitComponent(props) {
     const [name,setName]=useState(props.name)
@@ -48,18 +48,22 @@ export default function SubmitComponent(props) {
                 userNow.setAuth({token,userDetails})
                 // Send info
                     // console.log("respose is "+response.status);
-                if (response.status===201) {
-                    props.localStorage&&window.localStorage.setItem(
-                        'email',email
-                    )
-                    // window.location.pathname="register";
-                }
+                // if (response.status===201) {
+                //     // props.localStorage&&window.localStorage.setItem(
+                //     //     'email',email
+                //     // )
+                //     // window.location.pathname="register";
+                // }
     }
 }
     else if(props.method==="update") {
         if (flag===true) {
                             console.log("HI");
-                            let response=await axios.patch(`http://localhost:5001/api/users/${props.id}`,{
+                            console.log(userNow.auth.token);
+                            let response=await axios.patch(`http://localhost:5001/api/users/${props.id}`,{headers:{
+                                Accept:"application/json",
+                                Authorization:"Bearer "+userNow.auth.token
+                            }},{
                                 firstName:name,
                                 lastName:lastName,
                                 email:email,
@@ -86,7 +90,7 @@ export default function SubmitComponent(props) {
         
     }
     return(
-        <div className='root'>
+        <div className='root t1'>
             <form action="" className="wrapper" onSubmit={Submit}>
                 <h1>{props.title}</h1>
                 <div className="input-box">

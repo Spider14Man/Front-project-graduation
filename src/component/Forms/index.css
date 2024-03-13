@@ -15,6 +15,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     margin: 22px;
 }
+.t1{
+    margin-top: 50px;
+}
 .wrapper h1{
     font-size: 36px;
     text-align: center;
@@ -44,7 +47,10 @@
     }
 
 
-
+.wrapper .input-box-image{
+    padding: 5px;
+    margin:10px;
+}
 
 .wrapper .btn{
     width: 100%;

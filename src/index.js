@@ -6,7 +6,7 @@ import {  } from "./Pages/Dashboard/Dashboard";
 import App from './app';
 import "./Assets/all.min.css"
 import { BrowserRouter } from "react-router-dom";
-import UserProvider from'./Pages/Website/Context/Context'
+import UserProvider from'./Pages/Website/Context/UserContext'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>

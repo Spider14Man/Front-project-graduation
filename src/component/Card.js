@@ -20,10 +20,10 @@ export default function Card(props){
                             justifyContent:"space-between"
                         }}>
                             <h1>
-                        {props.title}
+                        {props.name}
                         </h1>   
                        <div>
-                       <i className="fa-solid fa-star"></i>  Instructor:{props.instructor}
+                       <i className="fa-solid fa-star"></i>  Description:{props.Description}
                         </div>
                         </div>
                        <div>

@@ -1,13 +1,19 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import {User} from "../../Website/Context/UserContext"
 
-export default function User() {
+export default function Users() {
     const [users,setUsers]=useState([])
     const [runUseEffect,setrunUseEffect]=useState(0)
+    const context=useContext(User)
+    const token=context.auth.token;
     async function deleteUser(id){
         try {
-            const res=await axios.delete(`http://localhost:5001/api/users/${id}`)
+            const res=await axios.delete(`http://localhost:5001/api/users/${id}`,{headers:{
+                Accept:"application/json",
+                Authorization:"Bearer "+token
+            }})
             if(res.status===200){
             setrunUseEffect((pre)=>pre+1)
         }
@@ -16,12 +22,24 @@ export default function User() {
         }
       
     }
+    
+    // console.log(token.auth.token);
     useEffect(()=>{
-        fetch('http://localhost:5001/api/users')
-        .then((res)=>res.json())
+        axios
+        .get('http://localhost:5001/api/users',{headers:{
+            Accept:"application/json",
+            Authorization:"Bearer "+token
+        }})
+        // .then((res)=>res.json())
         .then((res)=>{
-            console.log(res.data);
-            setUsers(res.data);
+            // console.log(token);
+            // context.setAuth((pre)=>{
+            //     return {...pre,token:res.data.refreshToken}
+            // })
+            // console.log(token);
+
+
+            setUsers(res.data.data);
         })
 
     },[runUseEffect])
@@ -59,8 +77,9 @@ export default function User() {
             </td>
         </tr>
         )
+      
     return (
-        <div style={{padding:"20px"}}>
+        <div style={{paddingTop:"40px"}}>
             <table>
                 <thead>
                     <tr>
@@ -75,6 +94,7 @@ export default function User() {
                 </tbody>
                 <tfoot></tfoot>
             </table>
+            {/* <button onClick={refresh}>refresh</button> */}
         </div>
     )
 }

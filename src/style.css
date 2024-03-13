@@ -11,10 +11,9 @@
 }
 body{
     
-    min-height: 100vh;
-    background:url('./Assets/pexels-pixabay-46798.jpg') no-repeat ;
-    background-size: cover;
-    background-position: center;
+    /* min-height: 100vh; */
+    /* background:url('./Assets/pexels-pixabay-46798.jpg') no-repeat ; */
+    
 }
 .d-flex{
     display: flex;
@@ -25,9 +24,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background:url('./Assets/pexels-pixabay-46798.jpg') no-repeat ; */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 .wrapper{
-    
+    /* box-sizing: border-box;
+    box-shadow: 1px 1px 10px 10px rgb(131, 189, 84); */
+    /* box-shadow: 1px 1px 10px 10px rgb(131, 189, 84); */
     width: 420px;
     background: transparent ;
     border: 2px solid rgb(255, 255, 255 , .2);
@@ -37,6 +42,7 @@ body{
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     margin: 5px;
+
 }
 .wrapper h1{
     font-size: 36px;
@@ -82,6 +88,10 @@ body{
     font-size: 16px;
     color: #333;
     font-weight: 600;
+}
+.wrapper .btn:hover{
+    background-color: rgb(131, 189, 84);
+    color: #fff;
 }
 .register-nav{
         padding: 6px;
